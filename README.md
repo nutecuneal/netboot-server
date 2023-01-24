@@ -8,6 +8,7 @@
     - [Requisitos](#requisitos)
   - [Instalação](#instalação)
     - [Instalando o Debian primeiro](#instalando-o-debian-primeiro)
+    - [Instalando omv-extras](#instalando-omv-extras)
   - [Configurando](#configurando)
 
 ## Como funciona um boot pela rede?
@@ -20,8 +21,6 @@ O boot pela rede funciona utilizando PXE (Preboot execution environment) permiti
 - Servidor TFTP para armazenamento das imagens e responsável por entregar elas para a máquina cliente.
 - Servidor DHCP que permita network booting e aponte para o servidor TFTP na rede.
 - Docker
-
-<br> 
 
 ## Instalação
 
@@ -59,6 +58,30 @@ Para utilizar o repositório mais atual, acesse essa parte da documentação: [h
 
 ***Obs: Na documentação aparece o comando "omv-confdbadm populate", mas ao tentar executar vai reclamar como erro, pode prosseguir sem ele, o OMV já foi instalado com suscesso.***
 
+### Instalando omv-extras
+
+Por padrão o OMV já disponibiliza vários plugins, mas para adicionar muitos outros e também permitir que instalação do Docker, devemos instalar o omv-extras.
+
+Pegue a linha de comando do script de instalação: [https://wiki.omv-extras.org/](https://wiki.omv-extras.org/)
+
+Entre no servidor com o usuário root, cole a linha de comando e aperte enter. Aguarde até que a instalação esteja concluida.
+
 ## Configurando
 
-Após o OMV ser instalado com suscesso, acesse a página web que vai permitir fazer as configurações: http://ip-servidor
+Após o OMV ser instalado com sucesso, acesse a página web que vai permitir fazer as configurações: http://ip-servidor
+
+O primeiro login é admin e a senha: openmediavault. Ao entrar é recomendado alterar a senha.
+
+***Obs: Caso tenha algum problema com a senha ou com a placa de rede, você pode entrar no servidor e digitar o comando "omv-firstaid", ele lhe permite fazer algumas mudanças.***
+
+Dentro da interface Web, você pode adicionar itens na sua dashboard clicando no icone de pessoa e selecionando dashboard.
+
+Alguns ajustes são necessários após a instalação:
+
+1. Altere o tempo de logout automático em Workbench
+2. Verifique se o TimeZone esta correto.
+3. Verifique a interface de rede.
+4. Verifique se os discos foram detectados em disks.
+
+
+
