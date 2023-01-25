@@ -10,6 +10,7 @@
     - [Instalando o Debian primeiro](#instalando-o-debian-primeiro)
     - [Instalando omv-extras](#instalando-omv-extras)
   - [Configurando](#configurando)
+    - [Montando um Sistema de Arquivos](#montando-um-sistema-de-arquivos)
 
 ## Como funciona um boot pela rede?
 
@@ -83,5 +84,30 @@ Alguns ajustes são necessários após a instalação:
 3. Verifique a interface de rede.
 4. Verifique se os discos foram detectados em disks.
 
+### Montando um Sistema de Arquivos
 
+Após constar que os discos foram montados corretamente, é preciso montar um sistema de arquivos no disco para começar a ter acesso a ele. 
 
+Para isso acesse: *Discos*
+
+1. Acesse a área de Sistema de arquivos.
+2. Selecione a partição do HD.
+3. Clique no icone de +
+4. Escolha ***criar*** ou se já tiver o sistema de arquivos escolha ***montar***.
+     - Criar
+       - Selecione o Dispositivo.
+       - Escolha o sistema de arquivos que deseja usar.
+       - Clique em salvar.
+       - Agora é preciso montar sistema de arquivos.
+     - Montar
+       - Selecione o sistema de arquivos.
+       - Selecione uma porcentagem de aviso quando a partição estiver quase cheia.
+       - Clique em Salvar.
+
+Depois que o sistema de arquivos foi montado, você precisa criar uma pasta compartilhada para que os serviços no sistema consigam acessar a partição do HD. Para isso:
+
+1. Selecione a área de Pastas Compartilhadas.
+2. Clique no icone +
+3. Atribua um nome a pasta.
+4. Selecione o sistema de arquivos que você montou anteriormente.
+5. Em Relative Path será como o nome da pasta ficara criada dentro do servidor. Ex.: isos
