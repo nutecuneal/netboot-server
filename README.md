@@ -10,7 +10,11 @@
     - [Instalando o Debian primeiro](#instalando-o-debian-primeiro)
     - [Instalando omv-extras](#instalando-omv-extras)
   - [Configurando](#configurando)
+    - [SSH](#ssh)
     - [Montando um Sistema de Arquivos](#montando-um-sistema-de-arquivos)
+    - [Instalando o Docker](#instalando-o-docker)
+    - [Criação dos containers](#criação-dos-containers)
+      - [Diretamente pelo servidor](#diretamente-pelo-servidor)
 
 ## Como funciona um boot pela rede?
 
@@ -84,6 +88,25 @@ Alguns ajustes são necessários após a instalação:
 3. Verifique a interface de rede.
 4. Verifique se os discos foram detectados em disks.
 
+### SSH
+
+Por padrão o OMV permite o acesso via ssh ao servidor somente com o usuário root e não com o usuário criado na instalação. Para alterar isso você pode entrar no servidor pela máquina fisica ou via ssh com root somente essa vez. Ao logar e abrir o terminal faça:
+
+```bash
+# Adicione o usuário no grupo do ssh e do sudo
+
+usermod -a -G sudo ssh nome-do-usuário
+```
+Após o comando retornar sem erro, saia do servidor e acesse o sistema do OMV pela página web:
+
+1. Clique em Serviços.
+2. Selecione SSH.
+3. Desmarque: *Permit root login*
+4. Clique em salvar.
+5. Caso apareça a mensagem "aplicar alterações" clique em aplicar.
+6. Agora teste o acesso ssh com o usuario criado no momento da instalação. 
+
+
 ### Montando um Sistema de Arquivos
 
 Após constar que os discos foram montados corretamente, é preciso montar um sistema de arquivos no disco para começar a ter acesso a ele. 
@@ -110,4 +133,30 @@ Depois que o sistema de arquivos foi montado, você precisa criar uma pasta comp
 2. Clique no icone +
 3. Atribua um nome a pasta.
 4. Selecione o sistema de arquivos que você montou anteriormente.
-5. Em Relative Path será como o nome da pasta ficara criada dentro do servidor. Ex.: isos
+5. Em Relative Path será como o nome da pasta ficará criada dentro do servidor. Ex.: isos
+6. Clique em salvar.
+
+Agora já temos uma pasta com um sistema de arquivos montado.
+
+### Instalando o Docker
+
+Para instalar o docker pelo OMV, faça:
+
+1. Acesse o OMV pela página web
+2. Clique em *Sistema / omv-extras*
+3. Dentro de omv-extras, clique em docker e depois em instalar.
+4. Aguarde a instalação finalizar.
+
+
+### Criação dos containers
+
+A criação dos containers podem ser realizadas de duas formas: **Diretamente no servidor** ou pelo **Portainer**.
+
+#### Diretamente pelo servidor
+
+1. Acesse o servidor via SSH com o usuário criado no momento da instalação e não como root.
+2. Use o comando: <code>sudo docker run</code> , e passe o restante dos argumentos para a criação do container.
+3. Você também pode utilizar o docker-compose para criar os containers.
+4. Para ver se os containers estão rodando use: <code>sudo docker ps</code>
+
+Qualquer dúvida sobre como criar um container ou como gerenciar um container, acesse a documentação do docker: (https://docs.docker.com/get-started/).
